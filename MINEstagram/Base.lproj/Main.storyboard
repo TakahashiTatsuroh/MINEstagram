@@ -22,33 +22,43 @@
                                 <rect key="frame" x="0.0" y="88" width="414" height="774"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="DYT-Jr-JQN">
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="DYT-Jr-JQN">
                                     <size key="itemSize" width="167" height="153"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Cell" id="6OM-LC-CUq">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cell" id="6OM-LC-CUq">
                                         <rect key="frame" x="0.0" y="0.0" width="167" height="153"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
                                             <rect key="frame" x="0.0" y="0.0" width="167" height="153"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" tag="1" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="IqA-bH-Kc1">
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" tag="1" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="IqA-bH-Kc1">
                                                     <rect key="frame" x="0.0" y="0.0" width="167" height="104"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" tag="2" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bck-yg-6hw">
+                                                <label opaque="NO" userInteractionEnabled="NO" tag="2" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bck-yg-6hw">
                                                     <rect key="frame" x="50" y="112" width="66" height="41"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="41" id="ib4-d4-Rip"/>
+                                                    </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                         </view>
+                                        <constraints>
+                                            <constraint firstAttribute="bottom" secondItem="Bck-yg-6hw" secondAttribute="bottom" id="LON-NK-q9o"/>
+                                            <constraint firstAttribute="trailing" secondItem="IqA-bH-Kc1" secondAttribute="trailing" id="PnW-7v-EaK"/>
+                                            <constraint firstItem="IqA-bH-Kc1" firstAttribute="leading" secondItem="6OM-LC-CUq" secondAttribute="leading" id="Xkv-Qf-P2C"/>
+                                            <constraint firstItem="Bck-yg-6hw" firstAttribute="top" secondItem="IqA-bH-Kc1" secondAttribute="bottom" constant="8" symbolic="YES" id="Z3u-rj-3lK"/>
+                                            <constraint firstItem="Bck-yg-6hw" firstAttribute="leading" secondItem="6OM-LC-CUq" secondAttribute="leadingMargin" constant="34" id="ePD-ec-EyS"/>
+                                            <constraint firstItem="IqA-bH-Kc1" firstAttribute="top" secondItem="6OM-LC-CUq" secondAttribute="top" id="jR8-5j-YMk"/>
+                                            <constraint firstItem="IqA-bH-Kc1" firstAttribute="centerX" secondItem="Bck-yg-6hw" secondAttribute="centerX" id="mAu-lz-y3g"/>
+                                        </constraints>
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
@@ -64,6 +74,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="collectionView" destination="oHg-kR-zF3" id="tET-RS-c2R"/>
                         <segue destination="BSR-lP-LHj" kind="show" identifier="toMake" id="C2t-b4-DPa"/>
                         <segue destination="Su8-Pm-Vyq" kind="show" identifier="toShow" id="yNx-Tb-Jme"/>
                     </connections>

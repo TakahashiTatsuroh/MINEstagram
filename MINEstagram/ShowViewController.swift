@@ -12,6 +12,8 @@ class ShowViewController: UIViewController {
     
     @IBOutlet weak var showImage: UIImageView!
     
+    var selectedImg: UIImage!
+    
     @IBOutlet weak var showTitle: UILabel!
     
     @IBOutlet weak var showText: UILabel!
@@ -19,6 +21,14 @@ class ShowViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+    
+    showImage.image = selectedImg
+    
+        showImage.contentMode = UIView.ContentMode.scaleAspectFit
     }
-
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+    }
+    
 }
