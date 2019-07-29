@@ -7,4 +7,5 @@ target 'MINEstagram' do
 
   # Pods for MINEstagram
 pod 'RevealingSplashView'
+pod 'IQKeyboardManagerSwift'
 end
