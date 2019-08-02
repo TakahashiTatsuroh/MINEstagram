@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import FontAwesome_swift
+import RealmSwift
 
 class MakeViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
@@ -14,13 +16,16 @@ class MakeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     
     @IBOutlet weak var textField: UITextField!
     
+    var file: File? = nil
+    
     @IBOutlet weak var textView: UITextView!
     
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
     }
+    
+    
 
     @IBAction func runCamera(_ sender: UIButton) {
         if UIImagePickerController.isSourceTypeAvailable(.camera) {
@@ -53,7 +58,53 @@ class MakeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         picker.dismiss(animated: true, completion: nil)
     }
     
+    fileprivate func createNewFile(_ text: String) {
+        
+        let realm = try! Realm()
+        
+        let file = File()
+        
+        
+        let id = getMaxid()
+        
+        file.id = id
+        file.title = text
+        file.content = text
+        file.image = (imageView.image?.jpegData(compressionQuality: 0.1))!
+        
+        try! realm.write {
+            realm.add(file)
+        }
+    }
+    
     @IBAction func didSaveButton(_ sender: UIButton) {
+        
+        guard let text = textField.text else {
+            return
+        }
+        
+        if text.isEmpty {
+            return
+        }
+        
+        createNewFile(text)
+        
+        navigationController?.popViewController(animated: true)
+    }
+    
+    func getMaxid() -> Int {
+        let realm = try! Realm()
+        
+        let id = realm.objects(File.self).max(ofProperty: "id") as Int?
+        
+        if id == nil {
+            //            最大IDがnil場合、１返す
+            return 1
+        } else {
+            //            最大IDが存在、最大ID + 1返す
+            return id! + 1
+        }
+        
     }
     
 }

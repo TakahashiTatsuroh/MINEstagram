@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -15,6 +15,8 @@
 		DDFEB39322EDE13700DE025C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DDFEB39122EDE13700DE025C /* LaunchScreen.storyboard */; };
 		DDFEB39B22EDE1CB00DE025C /* MakeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDFEB39A22EDE1CB00DE025C /* MakeViewController.swift */; };
 		DDFEB39D22EDE1E000DE025C /* ShowViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDFEB39C22EDE1E000DE025C /* ShowViewController.swift */; };
+		DDFEB42222F139DF00DE025C /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDFEB42122F139DF00DE025C /* File.swift */; };
+		DDFEB42422F26E5A00DE025C /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDFEB42322F26E5A00DE025C /* StartViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +32,8 @@
 		DDFEB39422EDE13700DE025C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DDFEB39A22EDE1CB00DE025C /* MakeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakeViewController.swift; sourceTree = "<group>"; };
 		DDFEB39C22EDE1E000DE025C /* ShowViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowViewController.swift; sourceTree = "<group>"; };
+		DDFEB42122F139DF00DE025C /* File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
+		DDFEB42322F26E5A00DE025C /* StartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,7 +62,6 @@
 				17DEBF4193B1936719FFEF08 /* Pods-MINEstagram.debug.xcconfig */,
 				011E7DFD9E4A5A28F05D49A1 /* Pods-MINEstagram.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -83,16 +86,34 @@
 		DDFEB38722EDE13500DE025C /* MINEstagram */ = {
 			isa = PBXGroup;
 			children = (
+				DDFEB42022F11E5800DE025C /* Objects */,
+				DDFEB41F22F11E0600DE025C /* Controllers */,
 				DDFEB38822EDE13500DE025C /* AppDelegate.swift */,
-				DDFEB38A22EDE13500DE025C /* ViewController.swift */,
 				DDFEB38C22EDE13500DE025C /* Main.storyboard */,
 				DDFEB38F22EDE13700DE025C /* Assets.xcassets */,
 				DDFEB39122EDE13700DE025C /* LaunchScreen.storyboard */,
 				DDFEB39422EDE13700DE025C /* Info.plist */,
-				DDFEB39A22EDE1CB00DE025C /* MakeViewController.swift */,
-				DDFEB39C22EDE1E000DE025C /* ShowViewController.swift */,
 			);
 			path = MINEstagram;
+			sourceTree = "<group>";
+		};
+		DDFEB41F22F11E0600DE025C /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				DDFEB42322F26E5A00DE025C /* StartViewController.swift */,
+				DDFEB39C22EDE1E000DE025C /* ShowViewController.swift */,
+				DDFEB39A22EDE1CB00DE025C /* MakeViewController.swift */,
+				DDFEB38A22EDE13500DE025C /* ViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		DDFEB42022F11E5800DE025C /* Objects */ = {
+			isa = PBXGroup;
+			children = (
+				DDFEB42122F139DF00DE025C /* File.swift */,
+			);
+			path = Objects;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -210,10 +231,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DDFEB42222F139DF00DE025C /* File.swift in Sources */,
 				DDFEB38B22EDE13500DE025C /* ViewController.swift in Sources */,
 				DDFEB39B22EDE1CB00DE025C /* MakeViewController.swift in Sources */,
 				DDFEB38922EDE13500DE025C /* AppDelegate.swift in Sources */,
 				DDFEB39D22EDE1E000DE025C /* ShowViewController.swift in Sources */,
+				DDFEB42422F26E5A00DE025C /* StartViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -363,6 +386,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = S2HF479Q3V;
 				INFOPLIST_FILE = MINEstagram/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.3;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -382,6 +406,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = S2HF479Q3V;
 				INFOPLIST_FILE = MINEstagram/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.3;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

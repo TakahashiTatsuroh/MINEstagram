@@ -20,17 +20,6 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let revealingSplashView = RevealingSplashView(iconImage: UIImage(named: "cel")!,iconInitialSize: CGSize(width: 450, height: 450), backgroundColor: UIColor(white: 1, alpha: 1))
-        
-        revealingSplashView.animationType = .woobleAndZoomOut
-        //Adds the revealing splash view as a sub view
-        self.view.addSubview(revealingSplashView)
-        
-        //Starts animation
-        revealingSplashView.startAnimation(){
-            print("Completed")
-        }
-        
         collectionView.delegate = self
         collectionView.dataSource = self
     }
