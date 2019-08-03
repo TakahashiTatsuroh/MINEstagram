@@ -8,20 +8,35 @@
 
 import UIKit
 import RevealingSplashView
+import RealmSwift
 
 class ViewController: UIViewController {
     
     @IBOutlet weak var collectionView: UICollectionView!
     
-    let images = ["zaku", "manu"]
+    var files:[File] = []
     
     var selectedImage: UIImage?
+    
+    func reloadCollectionView() {
+        let realm = try! Realm()
+        
+        files = realm.objects(File.self).reversed()
+        
+        collectionView.reloadData()
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         collectionView.delegate = self
         collectionView.dataSource = self
+        
+        reloadCollectionView()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        reloadCollectionView()
     }
 
     @IBAction func didAdttionButton(_ sender: UIBarButtonItem) {
@@ -33,21 +48,26 @@ class ViewController: UIViewController {
 extension ViewController: UICollectionViewDataSource, UICollectionViewDelegate {
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-    return images.count
+        
+        return files.count
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath)
-        // 取得したセルに画像を設定する
-        // 1. セルの中のImageViewを取得する
+        
+        let file = files[indexPath.row]
+        
+        
         let imageView = cell.contentView.viewWithTag(1) as! UIImageView
         
         // 2. 表示する画像を生成する
-        let cellImage = UIImage(named: images[indexPath.row])
+        let cellImage = UIImage(named: files[indexPath.row])
+        
+        cell.= file.image
         
         // 3. ImageViewに生成した画像を設定する
-        imageView.image = cellImage
+        cell.accessoryType = .disclosureIndicator
         
         // 取得したセルにラベルを設定する
         // 1. セルの中のLabelを取得する
@@ -63,7 +83,7 @@ extension ViewController: UICollectionViewDataSource, UICollectionViewDelegate {
                         didSelectItemAt indexPath: IndexPath) {
         
         // [indexPath.row] から画像名を探し、UImage を設定
-        selectedImage = UIImage(named: images[indexPath.row])
+        selectedImage = UIImage(named: files[indexPath.row])
         if selectedImage != nil {
             // SubViewController へ遷移するために Segue を呼び出す
             performSegue(withIdentifier: "toShow",sender: nil)

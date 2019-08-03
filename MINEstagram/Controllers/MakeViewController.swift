@@ -16,13 +16,16 @@ class MakeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     
     @IBOutlet weak var textField: UITextField!
     
-    var file: File? = nil
+    var textFFile: File? = nil
     
     @IBOutlet weak var textView: UITextView!
+    
+    var textVFile: File? = nil
     
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
     }
     
     
@@ -65,7 +68,7 @@ class MakeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         let file = File()
         
         
-        let id = getMaxid()
+        let id = getMaxId()
         
         file.id = id
         file.title = text
@@ -88,11 +91,10 @@ class MakeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         }
         
         createNewFile(text)
-        
         navigationController?.popViewController(animated: true)
     }
     
-    func getMaxid() -> Int {
+    func getMaxId() -> Int {
         let realm = try! Realm()
         
         let id = realm.objects(File.self).max(ofProperty: "id") as Int?
