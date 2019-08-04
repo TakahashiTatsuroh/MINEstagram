@@ -25,16 +25,12 @@ class ShowViewController: UIViewController {
     showImage.image = selectedImg
     
         showImage.contentMode = UIView.ContentMode.scaleAspectFit
-        
-//        font1.font = UIFont.fontAwesome(ofSize: 50, style: .brands)
-//        font1.text = String.fontAwesomeIcon(name:  .envira)
-//        font1.textColor = .green
-//
-//        font2.font = UIFont.fontAwesome(ofSize: 50, style: .brands)
-//        font2.text = String.fontAwesomeIcon(name:  .envira)
-//        font2.textColor = .green
+    }
+    
+    @IBAction func didDelete(_ sender: UIButton) {
         
     }
+    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

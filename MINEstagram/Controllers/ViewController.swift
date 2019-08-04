@@ -84,9 +84,10 @@ extension ViewController: UICollectionViewDataSource, UICollectionViewDelegate {
         
         // [indexPath.row] から画像名を探し、UImage を設定
         selectedImage = UIImage(named: files[indexPath.row])
+        
         if selectedImage != nil {
             // SubViewController へ遷移するために Segue を呼び出す
-            performSegue(withIdentifier: "toShow",sender: nil)
+            performSegue(withIdentifier: "toShow",sender: file)
         }
         
     }
@@ -96,7 +97,7 @@ extension ViewController: UICollectionViewDataSource, UICollectionViewDelegate {
         if (segue.identifier == "toShow") {
             let subVC: ShowViewController = (segue.destination as? ShowViewController)!
             // SubViewController のselectedImgに選択された画像を設定する
-            subVC.selectedImg = selectedImage
+            subVC.selectedImg = sender as! File
         }
     }
 }
