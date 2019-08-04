@@ -62,12 +62,13 @@ extension ViewController: UICollectionViewDataSource, UICollectionViewDelegate {
         let imageView = cell.contentView.viewWithTag(1) as! UIImageView
         
         // 2. 表示する画像を生成する
-        let cellImage = UIImage(named: files[indexPath.row])
-        
-        cell.= file.image
+//        let cellImage = UIImage(named: files[indexPath.row])
+        let cellImage = UIImage(data: files[indexPath.row].image)
+        imageView.image = cellImage
+//        cell.= file.image
         
         // 3. ImageViewに生成した画像を設定する
-        cell.accessoryType = .disclosureIndicator
+//        cell.accessoryType = .disclosureIndicator
         
         // 取得したセルにラベルを設定する
         // 1. セルの中のLabelを取得する
@@ -83,8 +84,12 @@ extension ViewController: UICollectionViewDataSource, UICollectionViewDelegate {
                         didSelectItemAt indexPath: IndexPath) {
         
         // [indexPath.row] から画像名を探し、UImage を設定
-        selectedImage = UIImage(named: files[indexPath.row])
+
+        selectedImage = UIImage(data: files[indexPath.row].image)
+
+   
         
+
         if selectedImage != nil {
             // SubViewController へ遷移するために Segue を呼び出す
             performSegue(withIdentifier: "toShow",sender: file)
