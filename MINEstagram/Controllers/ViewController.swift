@@ -57,7 +57,7 @@ extension ViewController: UICollectionViewDataSource, UICollectionViewDelegate {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath)
         
         let file = files[indexPath.row]
-        
+
         
         let imageView = cell.contentView.viewWithTag(1) as! UIImageView
         
@@ -92,7 +92,7 @@ extension ViewController: UICollectionViewDataSource, UICollectionViewDelegate {
 
         if selectedImage != nil {
             // SubViewController へ遷移するために Segue を呼び出す
-            performSegue(withIdentifier: "toShow",sender: file)
+            performSegue(withIdentifier: "toShow",sender: files)
         }
         
     }
@@ -100,9 +100,10 @@ extension ViewController: UICollectionViewDataSource, UICollectionViewDelegate {
     // Segue 準備
     override func prepare(for segue: UIStoryboardSegue, sender: Any!) {
         if (segue.identifier == "toShow") {
-            let subVC: ShowViewController = (segue.destination as? ShowViewController)!
-            // SubViewController のselectedImgに選択された画像を設定する
-            subVC.selectedImg = sender as! File
+            
+            let showVC: ShowViewController = (segue.destination as? ShowViewController)!
+            // ShowViewController のselectedImgに選択された画像を設定する
+            showVC.selectedImg = selectedImage
         }
     }
 }

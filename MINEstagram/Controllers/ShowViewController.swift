@@ -22,7 +22,7 @@ class ShowViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
     
-    showImage.image = selectedImg
+        showImage.image = selectedImg
     
         showImage.contentMode = UIView.ContentMode.scaleAspectFit
     }
