@@ -8,26 +8,50 @@
 
 import UIKit
 import FontAwesome_swift
+import RealmSwift
 
 class ShowViewController: UIViewController {
     
     @IBOutlet weak var showImage: UIImageView!
     
-    var selectedImg: UIImage!
+    var file: File!
     
     @IBOutlet weak var showTitle: UILabel!
     
+    var writenLabel = ""
+    
+    
     @IBOutlet weak var showText: UILabel!
+    
+    var contents:[File] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
     
-        showImage.image = selectedImg
+        let img = UIImage(data: file.image)
+        showImage.image = img
     
         showImage.contentMode = UIView.ContentMode.scaleAspectFit
+        
+        showTitle.text = file.title
+        
+        showTitle.contentMode = UIView.ContentMode.scaleAspectFit
+        
+        showText.text = file.content
+        
+        showTitle.contentMode = UIView.ContentMode.scaleAspectFit
+        
     }
     
     @IBAction func didDelete(_ sender: UIButton) {
+//        realmに繋いでデータ消す
+        let realm = try! Realm()
+        
+        try! realm.write {
+            realm.delete(file)
+        }
+        
+       navigationController?.popViewController(animated: true)
         
     }
     
@@ -37,3 +61,4 @@ class ShowViewController: UIViewController {
     }
     
 }
+

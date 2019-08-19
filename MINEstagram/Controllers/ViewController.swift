@@ -18,6 +18,8 @@ class ViewController: UIViewController {
     
     var selectedImage: UIImage?
     
+    var writenLabel: UILabel?
+    
     func reloadCollectionView() {
         let realm = try! Realm()
         
@@ -64,6 +66,7 @@ extension ViewController: UICollectionViewDataSource, UICollectionViewDelegate {
         // 2. 表示する画像を生成する
 //        let cellImage = UIImage(named: files[indexPath.row])
         let cellImage = UIImage(data: files[indexPath.row].image)
+        
         imageView.image = cellImage
 //        cell.= file.image
         
@@ -73,8 +76,11 @@ extension ViewController: UICollectionViewDataSource, UICollectionViewDelegate {
         // 取得したセルにラベルを設定する
         // 1. セルの中のLabelを取得する
         let label = cell.contentView.viewWithTag(2) as! UILabel
+        
+//        let cellLabel = UILabel(data:files[indexPath.row].text)
+        
         // 2. 取得したLabelに文字を設定する
-        label.text = "こんにちは"
+        label.text = files[indexPath.row].title
         
         // 完成したセルを返却する
         return cell
@@ -85,16 +91,22 @@ extension ViewController: UICollectionViewDataSource, UICollectionViewDelegate {
         
         // [indexPath.row] から画像名を探し、UImage を設定
 
-        selectedImage = UIImage(data: files[indexPath.row].image)
+//        selectedImage = UIImage(data: files[indexPath.row].image)
+        
+        
+        
+//        writenLabel = UILabel(textFFile:files[indexPath.row].title)
 
+        
    
         
 
-        if selectedImage != nil {
-            // SubViewController へ遷移するために Segue を呼び出す
-            performSegue(withIdentifier: "toShow",sender: files)
-        }
-        
+//        if selectedImage != nil {
+//            // ShowViewController へ遷移するために Segue を呼び出す
+//            performSegue(withIdentifier: "toShow",sender: files)
+//        }
+        let file = files[indexPath.row]
+        performSegue(withIdentifier: "toShow", sender: file)
     }
     
     // Segue 準備
@@ -103,12 +115,14 @@ extension ViewController: UICollectionViewDataSource, UICollectionViewDelegate {
             
             let showVC: ShowViewController = (segue.destination as? ShowViewController)!
             // ShowViewController のselectedImgに選択された画像を設定する
-            showVC.selectedImg = selectedImage
+//            showVC.selectedImg = selectedImage
+            showVC.file = sender as! File
         }
     }
 }
 
 extension ViewController: UICollectionViewDelegateFlowLayout {
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
         let horizontalSpace:CGFloat = 2

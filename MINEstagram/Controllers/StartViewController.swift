@@ -14,7 +14,7 @@ class StartViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let revealingSplashView = RevealingSplashView(iconImage: UIImage(named: "cel")!,iconInitialSize: CGSize(width: 450, height: 450), backgroundColor: UIColor(red: 0, green: 0, blue: 0, alpha: 1))
+        let revealingSplashView = RevealingSplashView(iconImage: UIImage(named: "cel")!,iconInitialSize: CGSize(width: 300, height: 300), backgroundColor: UIColor(red: 52, green: 119, blue: 57, alpha: 1))
         
         revealingSplashView.animationType = .woobleAndZoomOut
         //Adds the revealing splash view as a sub view

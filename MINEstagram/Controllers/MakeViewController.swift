@@ -16,11 +16,11 @@ class MakeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     
     @IBOutlet weak var textField: UITextField!
     
-    var textFFile: File? = nil
+    var file: File? = nil
     
     @IBOutlet weak var textView: UITextView!
     
-    var textVFile: File? = nil
+//    var textVFile: File? = nil
     
 
     override func viewDidLoad() {
@@ -61,7 +61,7 @@ class MakeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         picker.dismiss(animated: true, completion: nil)
     }
     
-    fileprivate func createNewFile(_ text: String) {
+    fileprivate func createNewFile(_ text: String, _ content: String) {
         
         let realm = try! Realm()
         
@@ -72,7 +72,7 @@ class MakeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         
         file.id = id
         file.title = text
-        file.content = text
+        file.content = content
         file.image = (imageView.image?.jpegData(compressionQuality: 0.1))!
         
         try! realm.write {
@@ -90,7 +90,16 @@ class MakeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
             return
         }
         
-        createNewFile(text)
+        guard let content = textView.text else {
+            return
+        }
+        
+        if content.isEmpty {
+            return
+        }
+        
+        createNewFile(text,content)
+        
         navigationController?.popViewController(animated: true)
     }
     
@@ -114,22 +123,18 @@ class MakeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
 
 @IBDesignable class InspectableTextView: UITextView {
     
-    // MARK: - プロパティ
-    /// プレースホルダーに表示する文字列（ローカライズ付き）
     @IBInspectable var localizedString: String = "" {
         didSet {
             guard !localizedString.isEmpty else { return }
-            // Localizable.stringsを参照する
+            
             placeholderLabel.text = NSLocalizedString(localizedString, comment: "")
-            placeholderLabel.sizeToFit()  // 省略不可
+            placeholderLabel.sizeToFit()
         }
     }
     
-    /// プレースホルダー用ラベルを作成
+//    ラベルを作成
     private lazy var placeholderLabel = UILabel(frame: CGRect(x: 6, y: 6, width: 0, height: 0))
     
-    // MARK: - Viewライフサイクルメソッド
-    /// ロード後に呼ばれる
     override func awakeFromNib() {
         super.awakeFromNib()
         delegate = self
@@ -137,22 +142,22 @@ class MakeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         togglePlaceholder()
     }
     
-    /// プレースホルダーを設定する
+    
     private func configurePlaceholder() {
         placeholderLabel.textColor = UIColor.gray
         addSubview(placeholderLabel)
     }
     
-    /// プレースホルダーの表示・非表示切り替え
+    
     private func togglePlaceholder() {
-        // テキスト未入力の場合のみプレースホルダーを表示する
+        
         placeholderLabel.isHidden = text.isEmpty ? false : true
     }
 }
 
-// MARK: -  UITextView Delegate
+
 extension InspectableTextView: UITextViewDelegate {
-    /// テキストが書き換えられるたびに呼ばれる ※privateにはできない
+
     func textViewDidChange(_ textView: UITextView) {
         togglePlaceholder()
     }

@@ -17,7 +17,7 @@
                     <view key="view" contentMode="scaleToFill" id="TQ7-rC-ABx">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" red="0.20253638700000001" green="0.46666309929999999" blue="0.22522474319999999" alpha="0.84705882349999995" colorSpace="custom" customColorSpace="displayP3"/>
                         <viewLayoutGuide key="safeArea" id="Zab-cw-ADl"/>
                     </view>
                     <navigationItem key="navigationItem" id="4mE-AG-e85"/>
@@ -55,16 +55,16 @@
                                             <rect key="frame" x="0.0" y="0.0" width="167" height="153"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" tag="1" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="IqA-bH-Kc1">
-                                                    <rect key="frame" x="0.0" y="0.0" width="167" height="104"/>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" tag="1" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="IqA-bH-Kc1">
+                                                    <rect key="frame" x="0.0" y="0.0" width="167" height="123"/>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" tag="2" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bck-yg-6hw">
-                                                    <rect key="frame" x="50" y="112" width="66" height="41"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" tag="2" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bck-yg-6hw">
+                                                    <rect key="frame" x="50" y="131" width="66" height="22"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="41" id="ib4-d4-Rip"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
+                                                    <color key="textColor" red="0.20299122429999999" green="0.46717144690000001" blue="0.22434182359999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
@@ -82,8 +82,7 @@
                                 </cells>
                             </collectionView>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <color key="tintColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" title="MINEstagram" id="7e6-bl-Ewb">
@@ -253,6 +252,7 @@
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="sw1-tv-ER3" firstAttribute="centerX" secondItem="kMK-y2-Hgl" secondAttribute="centerX" id="01L-tH-c8v"/>
                             <constraint firstItem="Q2D-Vp-iP0" firstAttribute="trailing" secondItem="aB3-nn-7Oh" secondAttribute="trailing" constant="102" id="1g5-VZ-2vE"/>
